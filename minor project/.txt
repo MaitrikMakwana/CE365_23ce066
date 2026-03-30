@@ -1,0 +1,15 @@
+# First, correctly map bison's path without spaces
+$env:BISON_PKGDATADIR = 'C:\FLEXWI~1\bison\share\bison'
+
+# Then, run the compilation steps
+bison -dy for_loop.y
+flex for_loop.l
+gcc y.tab.c lex.yy.c -o for_loop.exe
+
+.\for_loop.exe
+
+for (int i = 0; i < 10; ++i) { i += 1; }
+
+(Press Enter, then press Ctrl+Z followed by Enter to sendEOF on Windows)
+
+It will respond: Valid C++ for loop syntax matches the grammar.
